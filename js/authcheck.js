@@ -37,7 +37,7 @@ document.addEventListener('DOMContentLoaded', async () => {
 
             if(data.msg) {
                 window.location.reload()
-            window.location.href = "/"
+            window.location.href = "index.html"
             }
 
 
@@ -47,7 +47,7 @@ document.addEventListener('DOMContentLoaded', async () => {
         }
     }
 
-    console.log(data)
+    // console.log(data)
 
     if (!data || !admintoken) {
       const li = document.createElement('li');
@@ -58,26 +58,32 @@ document.addEventListener('DOMContentLoaded', async () => {
       li.innerHTML = `<p class="nav-link"><i class="fas fa-lock"></i> Login</p>`;
       navitems.appendChild(li);
     } else {
-      const li = document.createElement('li');
-      li.classList.add('nav-item');
-    
 
-      li.innerHTML = `
-        <p class="nav-link"><i class="fas fa-desktop"></i> Dashboard</p>
-        <p class="nav-link" id="logoutBtn"><i class="fas fa-lock"></i> Logout</p>
-      `;
-      navitems.appendChild(li);
+const dashboardLi = document.createElement('li');
+dashboardLi.classList.add('nav-item');
+dashboardLi.innerHTML = `
+  <p class="nav-link"><i class="fas fa-desktop"></i> Dashboard</p>
+`;
 
-      const logoutEl = document.getElementById('logoutBtn');
-if (logoutEl) {
-  logoutEl.addEventListener('click', LogOut);
-}
+const logoutLi = document.createElement('li');
+logoutLi.classList.add('nav-item');
+logoutLi.innerHTML = `
+  <p class="nav-link" id="logoutBtn"><i class="fas fa-lock"></i> Logout</p>
+`;
+
+navitems.appendChild(dashboardLi);
+navitems.appendChild(logoutLi);
+
+
+document.getElementById('logoutBtn')?.addEventListener('click', LogOut);
+
+
     }
 
   } catch (error) {
     console.log("There was a problem", error.message);
 
-    // Show a visible message on the page
+    
     const connectionMessage = document.createElement('div');
     connectionMessage.style.background = '#f8d7da';
     connectionMessage.style.color = '#721c24';
