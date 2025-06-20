@@ -1,0 +1,81 @@
+:root {
+  --primary-red: #c41e3a;
+  --dark-gray: #2c3e50;
+  --light-gray: #ecf0f1;
+  --border-color: #bdc3c7;
+}
+
+#uordered {
+  list-style: none;
+  padding: 0;
+}
+
+#uordered #stylelist {
+  background-color: var(--light-gray);
+  border: 1px solid var(--border-color);
+  padding: 10px 15px;
+  margin-bottom: 10px;
+  border-radius: 6px;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  font-family: "Georgia", serif;
+}
+#uordered #stylelist button.delete-sub {
+  background-color: var(--primary-red);
+  border: none;
+  color: white;
+  padding: 5px 10px;
+  font-size: 0.85rem;
+  border-radius: 4px;
+  cursor: pointer;
+  transition: background-color 0.2s ease;
+}
+#uordered #stylelist button.delete-sub:hover {
+  background-color: #a9182f;
+}
+
+
+#subCatForm {
+  margin-top: 20px;
+  background-color: var(--light-gray);
+  padding: 20px;
+  border-radius: 8px;
+  border: 1px solid var(--border-color);
+}
+
+#subCatForm input {
+  width: 100%;
+  padding: 10px;
+  border: 1px solid var(--border-color);
+  border-radius: 4px;
+  margin-bottom: 10px;
+}
+
+#subCatForm button {
+  background-color: var(--dark-gray);
+  color: white;
+  padding: 8px 16px;
+  border: none;
+  border-radius: 4px;
+  transition: background-color 0.2s ease;
+}
+
+#subCatForm button:hover {
+  background-color: #1a252f;
+}
+
+
+.modal-content {
+  border-radius: 10px;
+  font-family: "Georgia", serif;
+}
+
+.modal-header, .modal-footer {
+  background-color: var(--light-gray);
+}
+
+.modal-title {
+  color: var(--dark-gray);
+  font-weight: bold;
+}
