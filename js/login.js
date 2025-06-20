@@ -5,8 +5,7 @@ document.getElementById('loginForm').addEventListener('submit', async(e) => {
     try {
         const API_URL = "http://localhost:5000"
 
-        console.log(API_URL)
-
+       
         const adminMail = document.getElementById('email').value
         const adminKey = document.getElementById('password').value
         const submitBtn = document.getElementById('submitBtn')

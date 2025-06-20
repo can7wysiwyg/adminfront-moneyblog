@@ -34,11 +34,17 @@ document.addEventListener('DOMContentLoaded', async() => {
   viewCategories.className = "col-md-6 mb-4";
   manageSpellingBee.className = "col-md-6 mb-4";
 
+//   links
+
+createCategories.onclick = () => {
+    window.location.href = `/pages/createcategories.html`
+}
+
 
         createCategories.innerHTML = `
-            <div class="card shadow-sm">
+            <div class="card shadow-sm" style="cursor: pointer">
       <div class="card-body">
-        <h5 class="card-title"><i class="fas fa-folder-plus me-2 text-primary"></i> Create Categories</h5>
+        <h5 class="card-title"><i class="fas fa-folder-plus me-2 text-primary"></i> Create Categories and Sub-Categories</h5>
         <p class="card-text">Add new article categories to organize content.</p>
       </div>
     </div>
