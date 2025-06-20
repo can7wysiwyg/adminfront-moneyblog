@@ -5,6 +5,34 @@ document.addEventListener('DOMContentLoaded', async() => {
         const API_URL = "http://localhost:5000"
         const CreateCategoriesContainer = document.getElementById('create-categories')
 
+        // fetch categories
+
+        const fetchCats = await fetch(`${API_URL}/public/categories`, {
+            method: 'GET',
+            headers: {
+                'Content-Type': 'application/json'
+            }
+        })
+
+        if(!fetchCats.ok) {
+            console.log("Failed to fetch categories")
+
+        }
+
+        const categories = await fetchCats.json()
+
+
+        const categoryHtml = categories?.map(cat => `
+            
+            <li class="list-group-item-action d-flex align-items-center"
+    style="font-size: 1.1rem;">  <a href="singlecategory.html#${cat._id}"><i class="fas fa-folder me-2 text-primary"></i>${cat.category}</a> </li>
+            `).join('')
+
+        
+
+
+        // get user
+
         const response = await fetch(`${API_URL}/admin/check-session`, {
       method: 'GET',
       headers: {
@@ -48,11 +76,34 @@ document.addEventListener('DOMContentLoaded', async() => {
       Create Category
     </button>
   </form>
+
+    <div class="container mt-5">
+    <div class="row justify-content-center">
+      <div class="col-md-8">
+
+        <div class="card shadow-sm border-0">
+          <div class="card-header bg-primary text-white">
+            <h4 class="mb-0"><i class="fas fa-folder-open me-2"></i>Available Categories</h4>
+          </div>
+          
+          <ul class="list-group list-group-flush">
+            ${categoryHtml}
+          </ul>
+        </div>
+
+      </div>
+    </div>
+  </div>
+
 `;
+
+
 
          CreateCategoriesContainer.append(divForm)
 
 
+
+        //  submit form
 
       document.getElementById('categoryForm')?.addEventListener('submit', async(e) => {
            e.preventDefault()
