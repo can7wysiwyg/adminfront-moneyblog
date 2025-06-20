@@ -40,6 +40,10 @@ createCategories.onclick = () => {
     window.location.href = `/pages/createcategories.html`
 }
 
+viewCategories.onclick = () => {
+  window.location.href = "/pages/viewcategories.html"
+}
+
 
         createCategories.innerHTML = `
             <div class="card shadow-sm" style="cursor: pointer">
@@ -74,7 +78,7 @@ createCategories.onclick = () => {
         `
 
         viewCategories.innerHTML = `
-            <div class="card shadow-sm">
+            <div class="card shadow-sm" style="cursor: pointer">
       <div class="card-body">
         <h5 class="card-title"><i class="fas fa-list-ul me-2 text-warning"></i> View Categories</h5>
         <p class="card-text">See all available content categories.</p>

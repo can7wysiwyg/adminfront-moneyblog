@@ -62,13 +62,13 @@ document.addEventListener('DOMContentLoaded', async () => {
 const dashboardLi = document.createElement('li');
 dashboardLi.classList.add('nav-item');
 
-dashboardLi.onclick = () => {
-  window.location.href = "dashboard.html"
-}
+// dashboardLi.onclick = () => {
+//   window.location.href = "dashboard.html"
+// }
 
 
 dashboardLi.innerHTML = `
-  <p class="nav-link"><i class="fas fa-desktop"></i> Dashboard</p>
+  <a href="dashboard.html" class="nav-link"><i class="fas fa-desktop"></i> Dashboard</a>
 `;
 
 
