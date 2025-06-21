@@ -1,0 +1,305 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/bootstrap/5.3.0/css/bootstrap.min.css" rel="stylesheet">
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css" rel="stylesheet">
+    <link rel="stylesheet" href="./styles//main.css" />
+
+    <title>Admin| Create Articles</title>
+
+
+        <style>
+        :root {
+            --primary-red: #c41e3a;
+            --dark-gray: #2c3e50;
+            --light-gray: #ecf0f1;
+            --border-color: #bdc3c7;
+        }
+
+        body {
+            font-family: "Georgia", serif;
+            line-height: 1.6;
+            color: #2c3e50;
+            background: linear-gradient(135deg, var(--light-gray) 0%, #d5dbdb 100%);
+            min-height: 100vh;
+            padding: 2rem 0;
+        }
+
+        .form-container {
+            max-width: 700px;
+            margin: 0 auto;
+            background: white;
+            border-radius: 15px;
+            box-shadow: 0 15px 35px rgba(0, 0, 0, 0.1);
+            overflow: hidden;
+        }
+
+        .form-header {
+            background: linear-gradient(135deg, var(--primary-red), #a91731);
+            color: white;
+            padding: 2rem;
+            text-align: center;
+            position: relative;
+        }
+
+        .form-header::after {
+            content: '';
+            position: absolute;
+            bottom: -10px;
+            left: 50%;
+            transform: translateX(-50%);
+            width: 0;
+            height: 0;
+            border-left: 10px solid transparent;
+            border-right: 10px solid transparent;
+            border-top: 10px solid var(--primary-red);
+        }
+
+        .form-header i {
+            font-size: 2.5rem;
+            margin-bottom: 1rem;
+            opacity: 0.9;
+        }
+
+        .form-header h2 {
+            margin: 0;
+            font-weight: 300;
+            letter-spacing: 1px;
+        }
+
+        .form-body {
+            padding: 2.5rem;
+        }
+
+        .form-group {
+            margin-bottom: 2rem;
+            position: relative;
+        }
+
+        .form-label {
+            display: block;
+            margin-bottom: 0.8rem;
+            font-weight: 600;
+            color: var(--dark-gray);
+            font-size: 0.95rem;
+            letter-spacing: 0.5px;
+        }
+
+        .form-label i {
+            margin-right: 0.5rem;
+            color: var(--primary-red);
+            width: 16px;
+            text-align: center;
+        }
+
+        .form-control, .form-select {
+            border: 2px solid var(--border-color);
+            border-radius: 10px;
+            padding: 1rem 1.2rem;
+            font-size: 1rem;
+            transition: all 0.3s ease;
+            background: #fafafa;
+            box-shadow: inset 0 2px 4px rgba(0, 0, 0, 0.05);
+        }
+
+        .form-control:focus, .form-select:focus {
+            border-color: var(--primary-red);
+            box-shadow: 0 0 0 0.25rem rgba(196, 30, 58, 0.15);
+            background: white;
+            outline: none;
+        }
+
+        .form-control::placeholder {
+            color: #95a5a6;
+            font-style: italic;
+        }
+
+        textarea.form-control {
+            resize: vertical;
+            min-height: 120px;
+        }
+
+        .file-upload-wrapper {
+            position: relative;
+            display: inline-block;
+            width: 100%;
+        }
+
+        .file-upload-input {
+            position: relative;
+            z-index: 2;
+            width: 100%;
+            height: 60px;
+            opacity: 0;
+            cursor: pointer;
+        }
+
+        .file-upload-label {
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            z-index: 1;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            border: 2px dashed var(--border-color);
+            border-radius: 10px;
+            background: #fafafa;
+            color: #7f8c8d;
+            font-size: 0.95rem;
+            transition: all 0.3s ease;
+            cursor: pointer;
+        }
+
+        .file-upload-label:hover,
+        .file-upload-wrapper:hover .file-upload-label {
+            border-color: var(--primary-red);
+            background: rgba(196, 30, 58, 0.05);
+            color: var(--primary-red);
+        }
+
+        .file-upload-label i {
+            margin-right: 0.5rem;
+            font-size: 1.2rem;
+        }
+
+        .file-selected {
+            border-color: var(--primary-red) !important;
+            background: rgba(196, 30, 58, 0.05) !important;
+            color: var(--primary-red) !important;
+        }
+
+        .btn-create {
+            background: linear-gradient(135deg, var(--primary-red), #a91731);
+            border: none;
+            color: white;
+            padding: 1rem 2.5rem;
+            border-radius: 10px;
+            font-size: 1.1rem;
+            font-weight: 600;
+            letter-spacing: 0.5px;
+            transition: all 0.3s ease;
+            position: relative;
+            overflow: hidden;
+            width: 100%;
+            min-height: 56px;
+        }
+
+        .btn-create:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 8px 25px rgba(196, 30, 58, 0.3);
+        }
+
+        .btn-create:active {
+            transform: translateY(0);
+        }
+
+        .btn-create:disabled {
+            opacity: 0.7;
+            cursor: not-allowed;
+            transform: none !important;
+        }
+
+        .btn-create .loading-spinner {
+            display: none;
+            margin-right: 0.5rem;
+        }
+
+        .btn-create.loading .loading-spinner {
+            display: inline-block;
+        }
+
+        .subcategory-fade-in {
+            animation: fadeIn 0.3s ease-in-out;
+        }
+
+        @keyframes fadeIn {
+            from {
+                opacity: 0;
+                transform: translateY(-10px);
+            }
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+
+        .form-row {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 1.5rem;
+        }
+
+        @media (max-width: 768px) {
+            .form-container {
+                margin: 0 1rem;
+            }
+            
+            .form-body {
+                padding: 2rem 1.5rem;
+            }
+            
+            .form-header {
+                padding: 1.5rem;
+            }
+            
+            .form-row {
+                grid-template-columns: 1fr;
+                gap: 1rem;
+            }
+        }
+
+        .required-field::after {
+            content: ' *';
+            color: var(--primary-red);
+            font-weight: bold;
+        }
+    </style>
+
+
+
+
+</head>
+<body>
+        <nav class="navbar navbar-expand-lg navbar-dark bg-dark sticky-top">
+        <div class="container">
+            <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav">
+                <span class="navbar-toggler-icon"></span>
+            </button>
+            <div class="collapse navbar-collapse" id="navbarNav">
+                <ul id="navitems" class="navbar-nav me-auto" style="cursor: pointer;">
+                    <li class="nav-item">
+                        <a class="nav-link active" href="/">
+                            <i class="fas fa-home"></i> Home
+                        </a>
+                    </li>
+                    
+                </ul>
+                <div class="navbar-nav">
+                    <a class="nav-link" href="#search">
+                        <i class="fas fa-search"></i>
+                    </a>
+                    <a class="nav-link" href="#subscribe">
+                        <i class="fas fa-bell"></i>
+                    </a>
+                </div>
+            </div>
+        </div>
+    </nav>
+
+    <main id="create-articles" style="margin-top: 22px; margin-bottom: 22px;">
+        
+    </main>
+
+
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/bootstrap/5.3.0/js/bootstrap.bundle.min.js"></script>
+
+  <script src="./js/authcheck.js"></script>
+  <script src="./js/pages/createarticles.js"></script>
+    
+</body>
+</html>

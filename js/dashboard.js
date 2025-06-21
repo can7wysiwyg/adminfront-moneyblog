@@ -45,6 +45,13 @@ viewCategories.onclick = () => {
 }
 
 
+createArticles.onclick = () => {
+
+  window.location.href = "createarticles.html"
+
+}
+
+
         createCategories.innerHTML = `
             <div class="card shadow-sm" style="cursor: pointer">
       <div class="card-body">
@@ -57,7 +64,7 @@ viewCategories.onclick = () => {
 
 
         createArticles.innerHTML = `
-            <div class="card shadow-sm">
+            <div class="card shadow-sm" style="cursor: pointer">
       <div class="card-body">
         <h5 class="card-title"><i class="fas fa-newspaper me-2 text-success"></i> Create Articles</h5>
         <p class="card-text">Write and publish new articles for your readers.</p>
