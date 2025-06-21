@@ -47,24 +47,18 @@ document.addEventListener('DOMContentLoaded', async () => {
         }
     }
 
-    // console.log(data)
-
-    if (!data || !admintoken) {
+    
+    if (data.msg) {
       const li = document.createElement('li');
       li.classList.add('nav-item');
-      li.onclick = () => {
-        window.location.href = `login.html`;
-      };
-      li.innerHTML = `<p class="nav-link"><i class="fas fa-lock"></i> Login</p>`;
+      
+      li.innerHTML = `<a href="login.html" class="nav-link"><i class="fas fa-lock"></i> Login</a>`;
       navitems.appendChild(li);
-    } else {
+    } else if(admintoken) {
 
 const dashboardLi = document.createElement('li');
 dashboardLi.classList.add('nav-item');
 
-// dashboardLi.onclick = () => {
-//   window.location.href = "dashboard.html"
-// }
 
 
 dashboardLi.innerHTML = `

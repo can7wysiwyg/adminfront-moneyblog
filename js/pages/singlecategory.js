@@ -225,7 +225,7 @@ setTimeout(() => {
 
         alert(DeleteResult.msg)
 
-        window.location.href = "../dashboard.html"
+        window.location.href = "dashboard.html"
         
        } catch (error) {
         console.log('failed to delete', error.message)

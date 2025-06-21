@@ -37,11 +37,11 @@ document.addEventListener('DOMContentLoaded', async() => {
 //   links
 
 createCategories.onclick = () => {
-    window.location.href = `/pages/createcategories.html`
+    window.location.href = `createcategories.html`
 }
 
 viewCategories.onclick = () => {
-  window.location.href = "/pages/viewcategories.html"
+  window.location.href = "viewcategories.html"
 }
 
 
