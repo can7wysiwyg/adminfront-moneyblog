@@ -194,8 +194,89 @@ document.addEventListener('DOMContentLoaded', async () => {
 
         const data = await response.json()
 
-        alert(data.msg)
+        alert(data.messg)
 
+       if(data.messg) {
+
+        const moreIdeas = document.getElementById('moreideas')
+
+        try {
+
+          const response = await fetch(`${API_URL}/admin/last-added-article`, {
+            method: 'GET',
+            headers: {
+              'Authorization': `Bearer ${admintoken}`
+            }
+          })
+
+          if(!response.ok) {
+            console.log("There was a problem")
+          }
+
+          const data = await response.json()
+
+           const article = data.article[0]
+
+
+                   moreIdeas.innerHTML = `
+            <div class="success-container">
+                <div class="success-header">
+                    <i class="fas fa-check-circle text-success"></i>
+                    <h3>Article Created Successfully!</h3>
+                </div>
+                
+                <div class="article-preview">
+                    <div class="preview-header">
+                        <h4>Article Preview</h4>
+                    </div>
+                    
+                    <div class="preview-content">
+                        <div class="preview-item">
+                            <label><i class="fas fa-heading"></i> Title:</label>
+                            <p>${article.title || 'No title'}</p>
+                        </div>
+                        
+                        <div class="preview-item">
+                            <label><i class="fas fa-align-left"></i> Content:</label>
+                            <p class="content-preview">${article.content ? article.content.substring(0, 200) + (article.content.length > 200 ? '...' : '') : 'No content'}</p>
+                        </div>
+                        
+                        
+                        <div class="preview-item">
+                            <label><i class="fas fa-calendar"></i> Created:</label>
+                            <p>${new Date(article.createdAt).toLocaleDateString()}</p>
+                        </div>
+                        
+                        <div class="preview-actions">
+                            <button class="btn btn-primary" onclick="viewArticle('${article._id}')">
+                                <i class="fas fa-eye"></i> View Article
+                            </button>
+                            <a href="updatearticle.html#${article._id}" class="btn btn-secondary" >
+                                <i class="fas fa-plus"></i> Create Another
+                            </a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        `;
+
+      
+        moreIdeas.style.marginTop = '20px';
+        moreIdeas.style.padding = '15px';
+        moreIdeas.style.backgroundColor = '#f8f9fa';
+        moreIdeas.style.borderRadius = '8px';
+        moreIdeas.style.border = '1px solid #e9ecef';
+
+
+
+           
+          
+        } catch (error) {
+          console.log("failed to get recent added article", error.message)
+        }
+
+
+       }
 
 
 
