@@ -35,6 +35,9 @@ document.addEventListener('DOMContentLoaded', async () => {
       return;
     }
 
+    
+     
+
     // Create the form with category and subcategory selects
     const divForm = document.createElement('div');
 
@@ -56,16 +59,12 @@ document.addEventListener('DOMContentLoaded', async () => {
         <input type="text" id="title" placeholder="Article Title" class="form-control mb-2"  required />
 
         </div>
-                           <div class="form-group">
-                    <label class="form-label required-field" for="content">
-                        <i class="fas fa-align-left"></i>Article Content
-                    </label>
+                        
+      
+        <div id="editor">
 
-        <textarea id="content" rows="5" cols="50" class="form-control mb-2" placeholder="Article content..." required>
-        
-        
-        </textarea>
         </div>
+
 
                         <div class="form-row">
                     <div class="form-group">
@@ -101,7 +100,7 @@ document.addEventListener('DOMContentLoaded', async () => {
                                required />
                         <label for="photo" class="file-upload-label" id="fileLabel">
                             <i class="fas fa-cloud-upload-alt"></i>
-                            <span>Click to upload image or drag and drop</span>
+                            
                         </label>
                     </div>
                 </div>
@@ -125,6 +124,43 @@ document.addEventListener('DOMContentLoaded', async () => {
     `;
 
     CreateArticlesContainer.append(divForm);
+
+        const quill = new Quill('#editor', {
+      theme: 'snow',
+      modules: {
+        toolbar: [
+          // First row - Text formatting
+          [{ 'header': [1, 2, 3, 4, 5, 6, false] }],
+          [{ 'font': [] }],
+          [{ 'size': ['small', false, 'large', 'huge'] }],
+          
+          // Second row - Text styling
+          ['bold', 'italic', 'underline', 'strike'],
+          [{ 'color': [] }, { 'background': [] }],
+          [{ 'script': 'sub'}, { 'script': 'super' }],
+          
+          // Third row - Text alignment and direction
+          [{ 'align': [] }],
+          [{ 'direction': 'rtl' }],
+          [{ 'indent': '-1'}, { 'indent': '+1' }],
+          
+          // Fourth row - Lists and blocks
+          [{ 'list': 'ordered'}, { 'list': 'bullet' }],
+          ['blockquote', 'code-block'],
+          
+          // Fifth row - Media and links
+          ['link', 'image'],
+          ['formula'],
+          
+          // Sixth row - Cleanup
+          ['clean']
+        ]
+      },
+      placeholder: 'Write your article content here...',
+      readOnly: false
+    });
+
+
 
     // Dynamic subcategory logic
     const categorySelect = document.getElementById('categorySelect');
@@ -158,7 +194,8 @@ document.addEventListener('DOMContentLoaded', async () => {
       try {
 
         const title = document.getElementById('title').value
-        const content = document.getElementById('content').value
+        
+        const content = quill.root.innerHTML  
         const catId = document.getElementById('categorySelect').value
         const subCatId = document.getElementById('subCategorySelect').value
         const input = document.getElementById('photo')
@@ -168,6 +205,8 @@ document.addEventListener('DOMContentLoaded', async () => {
 
         sbtBtn.disabled = true
 
+
+        
 
         const formData = new FormData()
 
@@ -248,11 +287,11 @@ document.addEventListener('DOMContentLoaded', async () => {
                         </div>
                         
                         <div class="preview-actions">
-                            <button class="btn btn-primary" onclick="viewArticle('${article._id}')">
+                            <a href="articlesingle.html#${article._id}" class="btn btn-primary" >
                                 <i class="fas fa-eye"></i> View Article
-                            </button>
+                            </a>
                             <a href="updatearticle.html#${article._id}" class="btn btn-secondary" >
-                                <i class="fas fa-plus"></i> Create Another
+                                <i class="fas fa-plus"></i> Add Article Keywords
                             </a>
                         </div>
                     </div>
