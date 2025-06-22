@@ -52,6 +52,11 @@ createArticles.onclick = () => {
 }
 
 
+viewArticles.onclick = () => {
+  window.location.href = "viewarticles.html"
+}
+
+
         createCategories.innerHTML = `
             <div class="card shadow-sm" style="cursor: pointer">
       <div class="card-body">
@@ -75,7 +80,7 @@ createArticles.onclick = () => {
 
 
         viewArticles.innerHTML = `
-            <div class="card shadow-sm">
+            <div class="card shadow-sm" style="cursor: pointer">
       <div class="card-body">
         <h5 class="card-title"><i class="fas fa-eye me-2 text-info"></i> View Articles</h5>
         <p class="card-text">Browse and manage existing articles.</p>
