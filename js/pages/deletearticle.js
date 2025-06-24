@@ -2,7 +2,7 @@ document.addEventListener('DOMContentLoaded', async() => {
 
     try {
         const artId = window.location.hash.substring(1);
-        console.log(artId)
+        
     const API_URL = "http://localhost:5000"
     const DeleteAticle = document.getElementById('deletearticle')
   
@@ -20,8 +20,7 @@ document.addEventListener('DOMContentLoaded', async() => {
     const data = await response.json();
     const admintoken = data.data?.admin?.adminToken;
 
-   console.log(admintoken)
-
+   
    const item = await fetch(`${API_URL}/public/special-single/${artId}`, {
     method: 'GET',
     headers: {
@@ -42,28 +41,44 @@ document.addEventListener('DOMContentLoaded', async() => {
     const divSin = document.createElement('div')
 
     divSin.innerHTML = `
-    <div>
-            <img src="${article.photo}" width="100%" alt="article photo" style="border-radius: 4px; margin-bottom: 1rem;" />
-        <h4 style="font-size: 1rem; color">${article.title}</h4>
-        <button id"dltBtn" type="submit">delete article </button>
+    <div style="max-width: 600px; margin: 2rem auto; padding: 1.5rem; border: 1px solid var(--border-color); border-radius: 8px; background: var(--light-gray); box-shadow: 0 2px 8px rgba(0,0,0,0.1);">
+  <img 
+    src="${article.photo}" 
+    alt="article photo" 
+    width="100%" 
+    style="border-radius: 8px; margin-bottom: 1rem;"
+  />
 
+  <h4 
+    style="font-size: 1.25rem; font-weight: bold; color: var(--dark-gray); margin-bottom: 1rem; text-align: center;"
+  >
+    ${article.title}
+  </h4>
 
-    </div>
-    
+  <form id="dltForm" style="text-align: center;">
+    <button 
+      id="dltBtn" 
+      type="submit" 
+      style="padding: 0.6rem 1.2rem; background: var(--primary-red); color: white; border: none; border-radius: 4px; font-size: 1rem; cursor: pointer;"
+    >
+      Delete Article
+    </button>
+  </form>
+</div>
+
     `
 
     DeleteAticle.append(divSin)
 
 
-    document.getElementById('dltBtn')?.addEventListener('submit', async(e) => {
+    document.getElementById('dltForm')?.addEventListener('submit', async(e) => {
         e.preventDefault()
 
         try {
-
+                console.log("here")
           const dltBtn = document.getElementById('dltBtn')
 
-          dltBtn.disabled = true
-
+          
 
           const response = await fetch(`${API_URL}/admin/erase_article/${artId}`, {
             method: 'DELETE',

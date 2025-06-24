@@ -56,6 +56,11 @@ viewArticles.onclick = () => {
   window.location.href = "viewarticles.html"
 }
 
+manageSpellingBee.onclick = () => {
+
+  window.location.href = "newspellingbeegame.html"
+
+}
 
         createCategories.innerHTML = `
             <div class="card shadow-sm" style="cursor: pointer">
@@ -101,7 +106,7 @@ viewArticles.onclick = () => {
 
 
         manageSpellingBee.innerHTML = `
-            <div class="card shadow-sm">
+            <div class="card shadow-sm" style="cursor: pointer">
       <div class="card-body">
         <h5 class="card-title"><i class="fas fa-spell-check me-2 text-danger"></i> Manage Spelling Bee</h5>
         <p class="card-text">Create, update, and monitor spelling bee games.</p>
