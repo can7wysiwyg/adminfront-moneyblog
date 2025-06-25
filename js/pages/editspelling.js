@@ -109,6 +109,27 @@ document.addEventListener('DOMContentLoaded', async() => {
     </div>
 
   </div>
+
+
+  <div class="container text-center" style="margin-bottom: 32px;">
+<div>
+          <p><strong>Delete Game</strong></p>
+
+          </div>
+
+
+  <form id="deleteGame">
+
+  <button type="submit" id="dltBtn" 
+          style="background: purple; color: white; border: none; padding: 0.6rem 1.2rem; border-radius: 4px; cursor: pointer;">
+          Delete Game
+        </button>
+
+
+  </form>
+
+
+  </div>
 `;
 
           
@@ -246,6 +267,45 @@ try {
          })
 
 
+
+        //delete game
+        
+        document.getElementById('deleteGame').addEventListener('submit', async(e) => {
+      
+          e.preventDefault()
+
+          try {
+
+            const dltBtn = document.getElementById('dltBtn')
+
+            dltBtn.disabled = true
+
+
+            const res = await fetch(`${API_URL}/admin/delete-spelling-game/${gameId}`, {
+              method: 'DELETE',
+              headers: {
+                'Content-Type': 'application/json',
+                'Authorization': `Bearer ${admintoken}`
+              }
+            })
+
+          if(!res.ok) {
+            console.log("Server Error")
+          }
+
+          const data = await res.json()
+
+          alert(data.msg)
+
+          window.location.href = "newspellingbeegame.html"
+            
+          } catch (error) {
+            console.log("failed to delete game", error,)
+          }
+
+
+
+        })
 
 
     } else{
