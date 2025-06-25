@@ -5,6 +5,8 @@ try {
     const API_URL = "http://localhost:5000"
         const RecentGame = document.getElementById('recentgame')
         const OrderGames = document.getElementById('oldergames')
+        const NoGames = document.getElementById('nogames')
+
 
         const response = await fetch(`${API_URL}/admin/check-session`, {
       method: 'GET',
@@ -36,12 +38,32 @@ try {
         const games = await rGame.json()
 
 
-        const game = games.games
+        
+
+        const game = games.games 
+
+        if(!games.games || games.games.length === 0) { 
+   const divo = document.createElement('div')
+   divo.innerHTML = `
+   
+   <h3> NO GAMES AVAILABLE</h3>
+
+   <div>
+<a href="newspellingbeegame.html"> add new game </a>
+
+   </div>
+   
+   `
+   NoGames.append(divo)
+   return; 
+}
+
+
 
          let rAddedGame = game[game.length -1]; //game.pop()
  
     
-
+    
 
 
         // show recent game
