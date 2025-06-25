@@ -27,12 +27,14 @@ document.addEventListener('DOMContentLoaded', async() => {
         const viewArticles = document.createElement('div')
         const viewCategories = document.createElement('div')
         const manageSpellingBee = document.createElement('div')
+        const createSpellingBee = document.createElement('div')
         
           createCategories.className = "col-md-6 mb-4";
   createArticles.className = "col-md-6 mb-4";
   viewArticles.className = "col-md-6 mb-4";
   viewCategories.className = "col-md-6 mb-4";
   manageSpellingBee.className = "col-md-6 mb-4";
+  createSpellingBee.className = "col-md-6 mb-4"
 
 //   links
 
@@ -56,9 +58,15 @@ viewArticles.onclick = () => {
   window.location.href = "viewarticles.html"
 }
 
-manageSpellingBee.onclick = () => {
+createSpellingBee.onclick = () => {
 
   window.location.href = "newspellingbeegame.html"
+
+}
+
+manageSpellingBee.onclick = () => {
+
+  window.location.href = "viewrecentpellingbeegame.html"
 
 }
 
@@ -82,6 +90,17 @@ manageSpellingBee.onclick = () => {
     </div>
 
         `
+
+        createSpellingBee.innerHTML = `
+            <div class="card shadow-sm" style="cursor: pointer">
+      <div class="card-body">
+        <h5 class="card-title"><i class="fa-spell-check me-2 text-success"></i> Create Game</h5>
+        <p class="card-text">Create A Spelling Bee Game Of The Week </p>
+      </div>
+    </div>
+
+        `
+
 
 
         viewArticles.innerHTML = `
@@ -119,6 +138,7 @@ manageSpellingBee.onclick = () => {
  dashboardMain.classList.add('row')
     dashboardMain.append(viewCategories)
     dashboardMain.append(createArticles)
+    dashboardMain.append(createSpellingBee)
     dashboardMain.append(manageSpellingBee)
     dashboardMain.append(createCategories)
     dashboardMain.append(viewArticles)
