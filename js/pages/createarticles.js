@@ -149,7 +149,7 @@ document.addEventListener('DOMContentLoaded', async () => {
           ['blockquote', 'code-block'],
           
           // Fifth row - Media and links
-          ['link', 'image'],
+          ['link'],
           ['formula'],
           
           // Sixth row - Cleanup
@@ -287,9 +287,7 @@ document.addEventListener('DOMContentLoaded', async () => {
                         </div>
                         
                         <div class="preview-actions">
-                            <a href="articlesingle.html#${article._id}" class="btn btn-primary" >
-                                <i class="fas fa-eye"></i> View Article
-                            </a>
+                            
                             <a href="updatearticle.html#${article._id}" class="btn btn-secondary" >
                                 <i class="fas fa-plus"></i> Add Article Keywords
                             </a>

@@ -64,16 +64,17 @@ const totalPages = Math.ceil(articles.length / articlesPerPage);
     const modalId = `takeActionModal-${article._id}`;
 
     divArt.innerHTML = `
-      <div style="border: 1px solid var(--border-color); padding: 1rem; border-radius: 8px; background: var(--light-gray);">
-        <img src="${article.photo}" width="100%" alt="article photo" style="border-radius: 4px; margin-bottom: 1rem;" />
-        <h4 style="font-size: 1rem; color: var(--dark-gray);">${article.title}</h4>
-        <button 
-          data-bs-toggle="modal" 
-          data-bs-target="#${modalId}" 
-          style="padding: 0.5rem; background: var(--primary-red); color: white; border: none; border-radius: 4px; width: 100%;">
-          Take Action
-        </button>
-      </div>
+    
+<div style="border: 1px solid var(--border-color); padding: 1rem; border-radius: 8px; background: var(--light-gray); height: 100%; display: flex; flex-direction: column;"> 
+    <img src="${article.photo}" alt="article photo" style="width: 100%; height: 200px; object-fit: cover; border-radius: 4px; margin-bottom: 1rem;" /> 
+    <h4 style="font-size: 1rem; color: var(--dark-gray); flex-grow: 1; margin-bottom: 1rem;">${article.title}</h4> 
+    <button  
+      data-bs-toggle="modal"  
+      data-bs-target="#${modalId}"  
+      style="padding: 0.5rem; background: var(--primary-red); color: white; border: none; border-radius: 4px; width: 100%; margin-top: auto;"> 
+      Take Action 
+    </button> 
+</div>
 
       <!-- Modal -->
       <div class="modal fade" id="${modalId}" tabindex="-1" role="dialog" aria-labelledby="updatePhotoModalLabel-${article._id}" aria-hidden="true">
@@ -128,6 +129,7 @@ function renderPaginationControls() {
   };
 
   const nextBtn = document.createElement('button');
+
   nextBtn.textContent = 'Next';
   nextBtn.disabled = currentPage === totalPages;
   nextBtn.onclick = () => {

@@ -267,7 +267,7 @@ try {
           ['blockquote', 'code-block'],
           
           // Fifth row - Media and links
-          ['link', 'image'],
+          ['link', 'image', 'video'],
           ['formula'],
           
           // Sixth row - Cleanup
