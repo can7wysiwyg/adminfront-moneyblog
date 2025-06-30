@@ -22,12 +22,21 @@ document.addEventListener('DOMContentLoaded', async() => {
         const categories = await fetchCats.json()
 
 
-        const categoryHtml = categories?.map(cat => `
+    //     const categoryHtml = categories?.map(cat => `
             
-            <li class="list-group-item-action d-flex align-items-center"
-    style="font-size: 1.1rem;">  <a href="singlecategory.html#${cat._id}"><i class="fas fa-folder me-2 text-primary"></i>${cat.category}</a> </li>
-            `).join('')
+    //         <li class="list-group-item-action d-flex align-items-center"
+    // style="font-size: 1.1rem;">  <a href="singlecategory.html#${cat?._id}"><i class="fas fa-folder me-2 text-primary"></i>${cat.category}</a> </li>
+    //         `).join('')
 
+
+    const categoryHtml = Array.isArray(categories) ? categories.map(cat => `
+    <li class="list-group-item-action d-flex align-items-center"
+        style="font-size: 1.1rem;">
+        <a href="singlecategory.html#${cat?._id}">
+            <i class="fas fa-folder me-2 text-primary"></i>${cat.category}
+        </a>
+    </li>
+`).join('') : '';
         
 
 
