@@ -3,7 +3,7 @@ document.addEventListener('DOMContentLoaded', async() => {
     try {
         
             const catId = window.location.hash.substring(1); 
-            const API_URL = "http://localhost:5000"
+            const API_URL = "https://nodeapi-moneyblog.onrender.com"
             const ShowCategory = document.getElementById('show-category')
 
             if(!catId) {

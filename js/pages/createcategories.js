@@ -2,7 +2,7 @@ document.addEventListener('DOMContentLoaded', async() => {
 
     try {
 
-        const API_URL = "http://localhost:5000"
+        const API_URL = "https://nodeapi-moneyblog.onrender.com"
         const CreateCategoriesContainer = document.getElementById('create-categories')
 
         // fetch categories

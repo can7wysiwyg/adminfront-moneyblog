@@ -2,7 +2,7 @@ document.addEventListener('DOMContentLoaded', async() => {
 
 try {
 
-    const API_URL = "http://localhost:5000"
+    const API_URL = "https://nodeapi-moneyblog.onrender.com"
         const ViewArticles = document.getElementById('view-articles')
 
         const response = await fetch(`${API_URL}/admin/check-session`, {

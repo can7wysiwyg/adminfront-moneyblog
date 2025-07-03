@@ -3,7 +3,7 @@ document.getElementById('loginForm').addEventListener('submit', async(e) => {
 
 
     try {
-        const API_URL = "http://localhost:5000"
+        const API_URL = "https://nodeapi-moneyblog.onrender.com"
 
        
         const adminMail = document.getElementById('email').value
