@@ -18,6 +18,8 @@ document.addEventListener('DOMContentLoaded', async () => {
     const admintoken = data.data?.admin?.adminToken;
     const id = data.data?.admin?._id;
 
+    console.log(data)
+
    async function LogOut() {
         try {
 

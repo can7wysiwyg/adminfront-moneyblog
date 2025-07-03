@@ -20,6 +20,8 @@ document.addEventListener('DOMContentLoaded', async() => {
     const data = await response.json();
     const admintoken = data.data?.admin?.adminToken;
 
+    console.log(data)
+
 
     if(admintoken) {
         const createCategories = document.createElement('div')
