@@ -1,13 +1,18 @@
 document.addEventListener('DOMContentLoaded', async () => {
   try {
-    const API_URL = "https://nodeapi-moneyblog.onrender.com";
+        
+    const API_URL = "https://nodeapi-moneyblog.onrender.com"
+    
     const navitems = document.getElementById('navitems');
 
-    const response = await fetch(`${API_URL}/admin/check-session`, {
+    const key = localStorage.getItem('key')
+
+    const response = await fetch(`${API_URL}/admin/check-session?key=${key}`, {
       method: 'GET',
       headers: {
         'Content-Type': 'application/json'
       }
+    
     });
 
     if (!response.ok) {
@@ -16,14 +21,12 @@ document.addEventListener('DOMContentLoaded', async () => {
 
     const data = await response.json();
     const admintoken = data.data?.admin?.adminToken;
-    const id = data.data?.admin?._id;
-
-    console.log(data)
-
+    
+    
    async function LogOut() {
         try {
 
-            const adminLogOut = await fetch(`${API_URL}/admin/logout-admin/${id}`, {
+            const adminLogOut = await fetch(`${API_URL}/admin/logout-admin`, {
                 method: 'PUT',
                 headers: {
                     'Content-Type': 'application/json',
@@ -38,6 +41,7 @@ document.addEventListener('DOMContentLoaded', async () => {
             const data = await adminLogOut.json()
 
             if(data.msg) {
+              localStorage.removeItem('key')
                 window.location.reload()
             window.location.href = "index.html"
             }

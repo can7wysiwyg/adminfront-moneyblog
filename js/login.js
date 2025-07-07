@@ -26,12 +26,15 @@ document.getElementById('loginForm').addEventListener('submit', async(e) => {
 
         const data = await response.json()
 
+
+
        
         window.location.reload()
 
         if(data.msg) {
             alert(data.msg)
-        } else  if(data.message){
+        } else  if(data.key){
+            localStorage.setItem('key', data.key)
             window.location.href = "/"
             
         }
