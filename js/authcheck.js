@@ -21,6 +21,8 @@ document.addEventListener('DOMContentLoaded', async () => {
 
     const data = await response.json();
     const admintoken = data.data?.admin?.adminToken;
+
+    console.log(data)
     
     
    async function LogOut() {
