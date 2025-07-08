@@ -40,13 +40,14 @@ document.addEventListener('DOMContentLoaded', async() => {
         
 
 
-        // get user
+const key = localStorage.getItem('key')
 
-        const response = await fetch(`${API_URL}/admin/check-session`, {
+    const response = await fetch(`${API_URL}/admin/check-session?key=${key}`, {
       method: 'GET',
       headers: {
         'Content-Type': 'application/json'
       }
+    
     });
 
     if (!response.ok) {
@@ -54,8 +55,10 @@ document.addEventListener('DOMContentLoaded', async() => {
     }
 
     const data = await response.json();
+    
     const admintoken = data.data?.admin?.adminToken;
 
+        
 
     if(admintoken) {
         const divForm = document.createElement('div')

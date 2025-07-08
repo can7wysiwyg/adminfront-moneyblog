@@ -52,19 +52,24 @@ document.addEventListener('DOMContentLoaded', async() => {
 
         // get user
 
-        const response = await fetch(`${API_URL}/admin/check-session`, {
+        const key = localStorage.getItem('key')
+
+    const response = await fetch(`${API_URL}/admin/check-session?key=${key}`, {
       method: 'GET',
       headers: {
         'Content-Type': 'application/json'
       }
+    
     });
 
     if (!response.ok) {
       throw new Error("Server responded with an error");
     }
 
-    const userData = await response.json();
-    const admintoken = userData.data?.admin?.adminToken;
+    const datta = await response.json();
+    
+    const admintoken = datta.data?.admin?.adminToken;
+
 
     if(admintoken) {
 

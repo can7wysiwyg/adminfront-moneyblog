@@ -5,11 +5,14 @@ try {
     const API_URL = "https://nodeapi-moneyblog.onrender.com"
     const UpdateAticle = document.getElementById('update-article')
   
-    const response = await fetch(`${API_URL}/admin/check-session`, {
+    const key = localStorage.getItem('key')
+
+    const response = await fetch(`${API_URL}/admin/check-session?key=${key}`, {
       method: 'GET',
       headers: {
         'Content-Type': 'application/json'
       }
+    
     });
 
     if (!response.ok) {
@@ -17,7 +20,9 @@ try {
     }
 
     const data = await response.json();
+    
     const admintoken = data.data?.admin?.adminToken;
+
 
     const fetchArticle = await fetch(`${API_URL}/public/special-single/${artId}`, {
         method: 'GET',

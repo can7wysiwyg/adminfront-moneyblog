@@ -6,11 +6,14 @@ document.addEventListener('DOMContentLoaded', async() => {
         const API_URL = "https://nodeapi-moneyblog.onrender.com"
         const dashboardMain = document.getElementById('dashboard-main')
 
-        const response = await fetch(`${API_URL}/admin/check-session`, {
+        const key = localStorage.getItem('key')
+
+    const response = await fetch(`${API_URL}/admin/check-session?key=${key}`, {
       method: 'GET',
       headers: {
         'Content-Type': 'application/json'
       }
+    
     });
 
     if (!response.ok) {
@@ -18,6 +21,7 @@ document.addEventListener('DOMContentLoaded', async() => {
     }
 
     const data = await response.json();
+    
     const admintoken = data.data?.admin?.adminToken;
 
     
@@ -152,7 +156,7 @@ manageSpellingBee.onclick = () => {
         const h2 = document.createElement('h2')
         h2.classList.add("text-center")
 
-        h2.innerHTML = `You Need To Be Logged In!`
+        h2.innerHTML = `You Need To!`
 
         dashboardMain.append(h2)
 

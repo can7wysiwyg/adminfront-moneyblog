@@ -16,16 +16,25 @@ document.addEventListener('DOMContentLoaded', async () => {
 
     const categories = await fetchCats.json(); // contains subCategory
 
-    // Get user session
-    const response = await fetch(`${API_URL}/admin/check-session`, {
+   
+    const key = localStorage.getItem('key')
+
+    const response = await fetch(`${API_URL}/admin/check-session?key=${key}`, {
       method: 'GET',
-      headers: { 'Content-Type': 'application/json' }
+      headers: {
+        'Content-Type': 'application/json'
+      }
+    
     });
 
-    if (!response.ok) throw new Error("Session fetch failed");
+    if (!response.ok) {
+      throw new Error("Server responded with an error");
+    }
 
     const data = await response.json();
+    
     const admintoken = data.data?.admin?.adminToken;
+
 
     if (!admintoken) {
       const h4 = document.createElement('h4');

@@ -8,11 +8,14 @@ try {
         const NoGames = document.getElementById('nogames')
 
 
-        const response = await fetch(`${API_URL}/admin/check-session`, {
+        const key = localStorage.getItem('key')
+
+    const response = await fetch(`${API_URL}/admin/check-session?key=${key}`, {
       method: 'GET',
       headers: {
         'Content-Type': 'application/json'
       }
+    
     });
 
     if (!response.ok) {
@@ -20,7 +23,9 @@ try {
     }
 
     const data = await response.json();
+    
     const admintoken = data.data?.admin?.adminToken;
+
 
       if(admintoken) {
 

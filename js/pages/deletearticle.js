@@ -6,11 +6,14 @@ document.addEventListener('DOMContentLoaded', async() => {
     const API_URL = "https://nodeapi-moneyblog.onrender.com"
     const DeleteAticle = document.getElementById('deletearticle')
   
-    const response = await fetch(`${API_URL}/admin/check-session`, {
+    const key = localStorage.getItem('key')
+
+    const response = await fetch(`${API_URL}/admin/check-session?key=${key}`, {
       method: 'GET',
       headers: {
         'Content-Type': 'application/json'
       }
+    
     });
 
     if (!response.ok) {
@@ -18,6 +21,7 @@ document.addEventListener('DOMContentLoaded', async() => {
     }
 
     const data = await response.json();
+    
     const admintoken = data.data?.admin?.adminToken;
 
    
