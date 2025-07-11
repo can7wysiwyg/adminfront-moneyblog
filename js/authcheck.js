@@ -20,6 +20,8 @@ document.addEventListener('DOMContentLoaded', async () => {
     }
 
     const data = await response.json();
+
+    console.log(data)
     
     const admintoken = data.data?.admin?.adminToken;
 
