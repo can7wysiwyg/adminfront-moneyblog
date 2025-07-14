@@ -21,7 +21,7 @@ try {
 
     const data = await response.json();
     
-    const admintoken = data.data?.admin?.adminToken;
+    const admintoken = data.data?.admin?._id
 
 
     const fetchArticle = await fetch(`${API_URL}/public/special-single/${artId}`, {

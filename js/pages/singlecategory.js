@@ -68,7 +68,7 @@ document.addEventListener('DOMContentLoaded', async() => {
 
     const datta = await response.json();
     
-    const admintoken = datta.data?.admin?.adminToken;
+    const admintoken = datta.data?.admin?._id
 
 
     if(admintoken) {
